@@ -1,0 +1,30 @@
+﻿<Window x:Class="HackerProject.RunningSoftware"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HackerProject"
+        mc:Ignorable="d"
+        Title="RunningSoftware" Height="400" Width="1280" Left="30" Top="0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.Row="1" Grid.Column="0" Name="dgvRunningSoft" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding}" IsReadOnly="True" CanUserResizeRows="False" SelectionUnit="Cell"/>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal">
+            <Button Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" Click="btnRefresh_Click"/>
+            <Button Name="btnKill" Content="Kill" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" Click="btnKill_Click" />
+            <Button Name="btnComplete" Content="Complete" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" Click="btnComplete_Click" />
+            <Button Name="btnBounce" Content="Bounce" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" Click="btnBounce_Click"  />
+            
+            <Button Name="btnAutoRefresh" Content="AutoRefresh is OFF" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" Click="btnAutoRefresh_Click"  />
+            <TextBox Name="txbAutoRefreshS" Text="10" Margin="5,0,0,0" MinWidth="50" />
+            <TextBlock Text="s"/>
+        </StackPanel>
+    </Grid>
+</Window>
