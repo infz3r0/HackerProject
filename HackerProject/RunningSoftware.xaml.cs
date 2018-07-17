@@ -26,7 +26,7 @@ namespace HackerProject
     public partial class RunningSoftware : Window
     {
         public DataTable data = new DataTable();
-        public static List<Process> runningSoft = new List<Process>();
+        public List<Process> runningSoft = new List<Process>();
         public static Thread InstanceCaller;
         public bool autoRefreshOn = false;
 
@@ -53,7 +53,7 @@ namespace HackerProject
             }
         }
 
-        private static void AddSoftware(string decoded)
+        private void AddSoftware(string decoded)
         {
             try
             {
@@ -119,7 +119,7 @@ namespace HackerProject
             }
         }
 
-        private static async Task RunningSoft()
+        private async Task RunningSoft()
         {
             runningSoft.Clear();
             int o = 0;
@@ -163,19 +163,21 @@ namespace HackerProject
                 o += 50;
 
             } //end while
-
-
+            
         }
 
         public async void LoadData()
         {
+            pgbLoad.Value = 0;
             data = await GetData();
             dgvRunningSoft.DataContext = data.DefaultView;
+            pgbLoad.Value = 100;
         }
 
         private async Task<DataTable> GetData()
         {
             await RunningSoft();
+
             DataTable dt = new DataTable();
             dt.Columns.Add("Id");
             dt.Columns.Add("Type");
@@ -207,6 +209,8 @@ namespace HackerProject
 
                 dt.Rows.Add(row);
             }
+
+            
 
             return dt;
         }

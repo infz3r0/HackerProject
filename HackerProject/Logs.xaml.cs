@@ -117,8 +117,10 @@ namespace HackerProject
 
         public async void LoadData()
         {
+            pgbLoad.Value = 0;
             data = await GetData();
             dgvLogs.DataContext = data.DefaultView;
+            pgbLoad.Value = 100;
         }
 
         private async Task<DataTable> GetData()
@@ -140,14 +142,7 @@ namespace HackerProject
 
             return dt;
         }
-
-        private void ChangeColor()
-        {
-            foreach (DataRow r in dgvLogs.Items)
-            {
-
-            }
-        }
+        
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {

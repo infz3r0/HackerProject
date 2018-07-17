@@ -10,6 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -38,6 +39,8 @@
             </DataGrid.RowStyle>
 
         </DataGrid>
-
+        <StatusBar Grid.Row="2">
+            <ProgressBar Name="pgbLoad" Height="15" Width="200" Background="White"/>
+        </StatusBar>
     </Grid>
 </Window>

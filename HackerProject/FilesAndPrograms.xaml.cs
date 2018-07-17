@@ -170,13 +170,15 @@ namespace HackerProject
                     count++;
                 }
             }
-
+            
         }
 
         private async void LoadData()
         {
+            pgbLoad.Value = 0;
             data = await GetData();
             dgvFilesPrograms.DataContext = data.DefaultView;
+            pgbLoad.Value = 100;
         }
 
         private async Task<DataTable> GetData()
@@ -220,6 +222,7 @@ namespace HackerProject
 
                 dt.Rows.Add(row);
             }
+            
 
             return dt;
         }
@@ -284,6 +287,8 @@ namespace HackerProject
             }
         }
 
+        #region
+
         private async void btnRun_Click(object sender, RoutedEventArgs e)
         {
             await Action(ACTION.RUN);
@@ -333,6 +338,8 @@ namespace HackerProject
         {
             await Action(ACTION.PRIVATE);
         }
+
+        #endregion
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {

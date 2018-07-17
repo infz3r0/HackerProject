@@ -52,6 +52,8 @@ namespace HackerProject
             btnLogout.IsEnabled = isEnable;
             btnRoute.IsEnabled = isEnable;
             btnProgram.IsEnabled = isEnable;
+            btnLog.IsEnabled = isEnable;
+            btnRefreshStatus.IsEnabled = isEnable;
         }
 
         private async Task<string> POST(string uri, Dictionary<string, string> param, CookieContainer cookies)
@@ -130,7 +132,8 @@ namespace HackerProject
                         Task tsk = LoadStatus();
 
                         OpenWindow_FilesAndPrograms();
-                        OpenWindow_RunningSoftware();                        
+                        OpenWindow_RunningSoftware();
+                        OpenWindow_Logs();
                         await UpdateRoute();
 
                         await tsk;
@@ -248,7 +251,26 @@ namespace HackerProject
             SetIsEnableFunc(false);
             string reqUri = domain + "index.php?action=logout";
             await GET(reqUri, cookies);
-            SetIsEnableFunc(true);
+            CloseAllWindow();
+            btnLogin.IsEnabled = true;
+        }
+
+        private void CloseAllWindow()
+        {
+            string[] wNames = { "RunningSoftware", "FilesAndPrograms", "Logs" };
+            foreach (string w in wNames)
+            {
+                if (IsWindowOpen<Window>(w))
+                {
+                    foreach (Window wd in Application.Current.Windows)
+                    {
+                        if (wd.Name.Equals(w))
+                        {
+                            wd.Close();
+                        }
+                    }
+                }
+            }
         }
 
         private void OpenWindow_RunningSoftware()
