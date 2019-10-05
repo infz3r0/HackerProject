@@ -1,0 +1,67 @@
+﻿<Window x:Class="HackerProject.Views.StatusView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HackerProject.Views"
+        mc:Ignorable="d"
+        xmlns:xc="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="Status" Height="120" Width="300">
+    <Grid>
+        <xc:BusyIndicator Grid.RowSpan="99" Grid.ColumnSpan="99" Panel.ZIndex="99" BusyContent="{Binding BusyContent}" IsBusy="{Binding IsBusy}"></xc:BusyIndicator>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                <Button Name="btnRefresh" Content="Refresh" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                <Button Name="btnAutoRefresh" Content="{Binding AutoRefreshContent}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"   />
+                <TextBox Name="AutoRefreshInterval" Text="10" Margin="5,0,0,0" MinWidth="50" />
+                <TextBlock Text="s"/>
+            </StackPanel>
+            
+            <TextBlock Name="txkHDD" Text="HDD" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                <TextBlock Name="CurHDD" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Text="/" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Name="MaxHDD" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Name="PerHDD" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>            
+            
+            <TextBlock Name="txkCPU" Text="CPU" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                <TextBlock Name="CurCPU" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Text="/" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Name="MaxCPU" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Name="PerCPU" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+            
+            <TextBlock Name="txkRAM" Text="RAM" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                <TextBlock Name="CurRAM" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Text="/" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Name="MaxRAM" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Name="PerRAM" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+            
+            <TextBlock Name="txkBandW" Text="Bandwidth" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+                <TextBlock Name="CurBandwidth" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Text="/" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Name="MaxBandwidth" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Name="PerBandwidth" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+            
+        </Grid>
+    </Grid>
+</Window>

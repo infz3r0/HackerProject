@@ -1,0 +1,43 @@
+﻿<Window x:Class="HackerProject.Views.FileAndProgramView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HackerProject.Views"
+        mc:Ignorable="d"
+        xmlns:xc="http://schemas.xceed.com/wpf/xaml/toolkit"
+       Title="Files and Programs" Height="400" Width="1280" Left="0" Top="30">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <xc:BusyIndicator Grid.RowSpan="99" Grid.ColumnSpan="99" Panel.ZIndex="99" BusyContent="{Binding BusyContent}" IsBusy="{Binding IsBusy}"></xc:BusyIndicator>
+
+        <DataGrid Grid.Row="1" Grid.Column="0" Name="FileProgramList" IsReadOnly="True" AutoGenerateColumns="True" SelectedItem="{Binding SelectedItem}"/>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal">
+            <Button Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"  />
+
+            <Button Name="btnRun" Content="Run" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" IsEnabled="{Binding CanRun}"/>
+            <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" IsEnabled="{Binding CanDelete}"/>
+            <Button Name="btnHide" Content="Hide" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" IsEnabled="{Binding CanHide}"  />
+            <Button Name="btnUnhide" Content="Unhide" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" IsEnabled="{Binding CanUnhide}" />
+            <Button Name="btnEncrypt" Content="Encrypt" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" IsEnabled="{Binding CanEncrypt}"  />
+            <Button Name="btnDecrypt" Content="Decrypt" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" IsEnabled="{Binding CanDecrypt}" />
+            <Button Name="btnUpload" Content="Upload" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" IsEnabled="{Binding CanUpload}"  />
+            <Button Name="btnDownload" Content="Download" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" IsEnabled="{Binding CanDownload}" />
+            <Button Name="btnPublic" Content="Public" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" IsEnabled="{Binding CanPublic}"  />
+            <Button Name="btnPrivate" Content="Private" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" IsEnabled="{Binding CanPrivate}" />
+
+
+        </StackPanel>
+        <StatusBar Grid.Row="2">
+            <ProgressBar Name="pgbLoad" Height="15" Width="200" Background="White"/>
+        </StatusBar>
+    </Grid>
+</Window>

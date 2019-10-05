@@ -1,11 +1,13 @@
-﻿<Window x:Class="HackerProject.MainWindow"
+﻿<Window x:Class="HackerProject.Views.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HackerProject"
+        xmlns:local="clr-namespace:HackerProject.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="200" Width="800" Left="0" Top="560">
+       
+        xmlns:xc="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="Hacker Project Tool" Height="200" Width="800" Left="0" Top="560" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
@@ -15,6 +17,8 @@
             <ColumnDefinition Width="0.4*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+
+        <xc:BusyIndicator Grid.RowSpan="99" Grid.ColumnSpan="99" Panel.ZIndex="99" BusyContent="{Binding BusyContent}" IsBusy="{Binding IsBusy}"></xc:BusyIndicator>
 
         <Grid>
             <Grid.RowDefinitions>
@@ -27,17 +31,17 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Name="txkUsername" Text="Username" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-            <TextBox Name="txbUsename" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="infz3r0"></TextBox>
+            <TextBlock Name="txkUsername" Text="Username" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock>
+            <TextBox Name="Username" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" IsEnabled="{Binding CanLogin}" ></TextBox>
 
-            <TextBlock Name="txkPassword" Text="Password" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-            <PasswordBox Name="txbPassword" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Password="Falcon1412"></PasswordBox>
+            <TextBlock Name="txkPassword" Text="Password" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock>
+            <PasswordBox Name="Password" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" PasswordChanged="Password_PasswordChanged" IsEnabled="{Binding CanLogin}"></PasswordBox>
 
             <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button Name="btnLogin" Content="Login" MinWidth="60" Click="btnLogin_Click" IsDefault="True" />
-                <Button Name="btnLogout" Content="Logout" Margin="30,0,0,0" MinWidth="60" Click="btnLogout_Click" />
+                <Button Name="Login" Content="Login" MinWidth="60" IsDefault="True" IsEnabled="{Binding CanLogin}"/>
+                <Button Name="Logout" Content="Logout" Margin="30,0,0,0" MinWidth="60" IsEnabled="{Binding CanLogout}"/>
             </StackPanel>
-            
+
         </Grid>
 
         <Grid Grid.Row="0" Grid.Column="1">
@@ -54,21 +58,21 @@
             </Grid.ColumnDefinitions>
 
             <!--Left-->
-            <TextBlock Name="txkID" Text="PHPSESSID" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-            <TextBox Name="txbID" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" IsTabStop="False" IsReadOnly="True"/>
+            <TextBlock Name="txkID" Text="Status" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            <TextBox Name="SessionId" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" IsTabStop="False" IsReadOnly="True"/>
 
             <TextBlock Name="txkHDD" Text="HDD" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
             <TextBlock Name="txkHDD_Value" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
 
-            <Button Grid.Row="2" Grid.Column="0" Name="btnRefreshStatus" Content="Refresh" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnRefreshStatus_Click"  />
+            <Button Grid.Row="2" Grid.Column="0" Name="RefreshTest" Content="Refresh" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
             <!--Right-->
             <TextBlock Name="txkCPU" Text="CPU" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
             <TextBlock Name="txkCPU_Value" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-            
+
             <TextBlock Name="txkRAM" Text="RAM" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
             <TextBlock Name="txkRAM_Value" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-            
+
             <TextBlock Name="txkBandW" Text="Bandwidth" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
             <TextBlock Name="txkBandW_Value" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
 
@@ -76,13 +80,13 @@
 
         <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Margin="0,5">
-                <Button Name="btnRunningSoft" Content="Running Software" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnRunningSoft_Click" Margin="5,0" />            
-                <Button Name="btnProgram" Content="Programs" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="btnProgram_Click" Margin="5,0" />
-                <Button Name="btnRoute" Content="Route" HorizontalAlignment="Right" VerticalAlignment="Top" Click="btnRoute_Click" Margin="5,0" />
+                <Button Name="btnRunning" Content="Running Software" IsEnabled="{Binding CanLogout}" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="5,0" />
+                <Button Name="btnProgram" Content="Programs" IsEnabled="{Binding CanLogout}" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="5,0" />
+                <!--<Button Name="btnRoute" Content="Route" HorizontalAlignment="Right" VerticalAlignment="Top"  Margin="5,0" />-->
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,5">
-                <Button Name="btnLog" Content="Logs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0" Click="btnLog_Click" />
+                <Button Name="btnLog" Content="Logs" IsEnabled="{Binding CanLogout}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0"  />
 
             </StackPanel>
         </StackPanel>
@@ -99,6 +103,6 @@
             <TextBlock Name="txkRoute" Grid.Row="0" Grid.Column="0" Text="Route" Margin="5,0,0,0" />
         </Grid>
     </Grid>
-    
-    
+
+
 </Window>
