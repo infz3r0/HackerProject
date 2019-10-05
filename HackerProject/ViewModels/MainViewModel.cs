@@ -250,5 +250,14 @@ namespace HackerProject.ViewModels
                 windowManager.ShowWindow(new LogViewModel());
             }
         }
+
+        public void BtnIPDB()
+        {
+            if (ViewModelManager.IPDBViewModelInstance == null)
+            {
+                WindowManager windowManager = new WindowManager();
+                windowManager.ShowWindow(new IPDBViewModel());
+            }
+        }
     }
 }

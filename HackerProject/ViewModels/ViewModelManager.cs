@@ -13,5 +13,6 @@ namespace HackerProject.ViewModels
         public static RunningProcessViewModel RunningProcessViewModelInstance { get; set; }
         public static StatusViewModel StatusViewModelInstance { get; set; }
         public static LogViewModel LogViewModelInstance { get; set; }
+        public static IPDBViewModel IPDBViewModelInstance { get; set; }
     }
 }

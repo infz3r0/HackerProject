@@ -87,7 +87,7 @@
 
             <StackPanel Orientation="Horizontal" Margin="0,5">
                 <Button Name="btnLog" Content="Logs" IsEnabled="{Binding CanLogout}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0"  />
-
+                <Button Name="btnIPDB" Content="IPDB" IsEnabled="{Binding CanLogout}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0"  />
             </StackPanel>
         </StackPanel>
 

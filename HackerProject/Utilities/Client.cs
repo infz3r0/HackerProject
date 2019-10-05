@@ -10,7 +10,7 @@ namespace HackerProject.Utilities
 {
     public static class Client
     {
-        public static string Domain = "http://www.hacker-project.com/";
+        public const string Domain = "http://www.hacker-project.com/";
         public static CookieContainer CookieContainer = new CookieContainer();
         public static HttpClientHandler HttpClientHandler = new HttpClientHandler() { CookieContainer = CookieContainer };
         public static HttpClient HttpClient = new HttpClient(HttpClientHandler);
