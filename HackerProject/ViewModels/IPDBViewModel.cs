@@ -140,7 +140,7 @@ namespace HackerProject.ViewModels
                     }
 
                     string ip = childs[i].SelectSingleNode(@"./td[@class='green']/a").InnerText;
-                    string name = childs[i].SelectSingleNode(@"./td[4]").InnerText.Replace("\r","").Replace("\t", "").Replace("\n","");
+                    string name = StringHelper.RemoveSpecial(childs[i].SelectSingleNode(@"./td[4]").InnerText);
                     string admin = childs[i].SelectSingleNode(@"./td[5]/i").InnerText;
                     string owned = childs[i].SelectSingleNode(@"./td[6]").InnerText;
                     string connect = childs[i].SelectSingleNode(@".//tr[@class='m2']/td[1]/a").GetAttributeValue("href", "");

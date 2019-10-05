@@ -14,5 +14,7 @@ namespace HackerProject.ViewModels
         public static StatusViewModel StatusViewModelInstance { get; set; }
         public static LogViewModel LogViewModelInstance { get; set; }
         public static IPDBViewModel IPDBViewModelInstance { get; set; }
+        public static MissionViewModel MissionViewModelInstance { get; set; }
+
     }
 }

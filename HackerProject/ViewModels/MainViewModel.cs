@@ -259,5 +259,14 @@ namespace HackerProject.ViewModels
                 windowManager.ShowWindow(new IPDBViewModel());
             }
         }
+
+        public void BtnMission()
+        {
+            if (ViewModelManager.MissionViewModelInstance == null)
+            {
+                WindowManager windowManager = new WindowManager();
+                windowManager.ShowWindow(new MissionViewModel());
+            }
+        }
     }
 }

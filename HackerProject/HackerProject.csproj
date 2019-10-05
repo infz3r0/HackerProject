@@ -88,16 +88,19 @@
     <Compile Include="Models\FileProgramModel.cs" />
     <Compile Include="Models\IPDBModel.cs" />
     <Compile Include="Models\LogModel.cs" />
+    <Compile Include="Models\MissionModel.cs" />
     <Compile Include="Models\RunningProcessModel.cs" />
     <Compile Include="Models\StatusModel.cs" />
     <Compile Include="Utilities\Client.cs" />
     <Compile Include="Utilities\CustomTimer.cs" />
     <Compile Include="Utilities\SendRequest.cs" />
+    <Compile Include="Utilities\StringHelper.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\FileAndProgramViewModel.cs" />
     <Compile Include="ViewModels\IPDBViewModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MissionViewModel.cs" />
     <Compile Include="ViewModels\RunningProcessViewModel.cs" />
     <Compile Include="ViewModels\StatusViewModel.cs" />
     <Compile Include="ViewModels\ViewModelManager.cs" />
@@ -112,6 +115,9 @@
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MissionView.xaml.cs">
+      <DependentUpon>MissionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RunningProcessView.xaml.cs">
       <DependentUpon>RunningProcessView.xaml</DependentUpon>
@@ -136,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MissionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
